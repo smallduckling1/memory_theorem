@@ -208,7 +208,7 @@ Each card: **Name → Problem → Core mechanism → Lifecycle / dataflow → Tr
 - **Crystalline:** cold; compressed or packed, read-mostly.
 - **Sublimation:** payload released entirely, leaving only a descriptor (a recipe or backing-store key) so the object can be rebuilt or refetched.
 
-Transitions use **hysteresis** (different up/down thresholds and minimum dwell time) to prevent thrashing. Handles are **two-tier** `(slot_index, epoch_gen)`: the slot index is stable, the epoch changes on tier transitions so stale references are detected, and access to a non-resident object triggers **transparent thawing/hydration**. Background demotion/promotion runs on E-cores with lock-free queues.
+Transitions use **hysteresis** (different up/down thresholds and minimum dwell time) to prevent thrashing. Handles are **two-tier** `(slot_index, epoch_gen)`: the slot index is stable, the generation changes only when the slot is reused so stale handles are detected (a separate per-slot tier epoch tracks tier transitions so cached resolved pointers are invalidated), and access to a non-resident object triggers **transparent thawing/hydration**. Background demotion/promotion runs on E-cores with lock-free queues.
 
 **Trade-offs.** Larger effective capacity and better cache residency for hot data; graceful degradation under memory pressure. Costs: decay bookkeeping, thaw latency on cold access (a new tail source), compression CPU cost, and a need for correct regeneration descriptors.
 

@@ -33,10 +33,10 @@ Latency figures quoted for hardware (e.g. "DRAM is roughly 50–100 ns") are typ
 └── paper/
     ├── 00_abstract_and_problem.md         ← problem, cost model, full taxonomy
     ├── 01_structural_and_lifetime_models.md   ← SegGenPool, LastUseLifetime, TileCompact, LayoutMorph/ColSlab
-    ├── 02_master_slave_model.md           ← MasterSlaveMM            (pending)
-    ├── 03_ctmm_thermodynamic_memory.md    ← CTMM                     (pending)
-    ├── 04_jit_gc_codesign.md              ← JITDestruct, CacheSweep, StallHarvest (pending)
-    └── 05_synthesis_benchmarks_and_limits.md  ← compatibility, failure modes, benchmarks (pending)
+    ├── 02_master_slave_model.md           ← MasterSlaveMM
+    ├── 03_ctmm_thermodynamic_memory.md    ← CTMM
+    ├── 04_jit_gc_codesign.md              ← JITDestruct, CacheSweep, StallHarvest
+    └── 05_synthesis_benchmarks_and_limits.md  ← compatibility, failure modes, benchmarks
 ```
 
 ## 3. Quick Navigation
@@ -100,7 +100,7 @@ Every technique has exactly one canonical name. Use these names verbatim in code
 4. **Conflicts go in one place.** Cross-technique interactions and conflicts belong in `paper/05` and `THEORY.md` §3, not scattered in individual papers (individual papers may link to them).
 5. **Open questions** are marked `OPEN:` inline so they can be grepped: `grep -rn "OPEN:" .`
 6. **Iteration loop:** change a card → check the glossary → check `paper/05` compatibility matrix → add or update a benchmark hypothesis.
-7. **Status:** `paper/00` and `paper/01` are complete drafts. `paper/02`–`paper/05` are pending.
+7. **Status:** all documents (`README`, `THEORY`, `paper/00`–`paper/05`) are complete first drafts. Next iteration: resolve `OPEN:` items (`grep -rn "OPEN:" .`) and run Stage 0 of the roadmap in `paper/05` §9.
 
 ## 6. Scope and Non-Goals
 
